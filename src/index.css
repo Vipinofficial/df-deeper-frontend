@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* GitHub Dark / High Density Visual Theme Palette Overrides */
+  --color-slate-950: #0d1117;
+  --color-slate-900: #161b22;
+  --color-slate-850: #21262d;
+  --color-slate-800: #30363d;
+  --color-slate-700: #484f58;
+  --color-slate-600: #8b949e;
+  --color-slate-550: #6e7681;
+  --color-slate-500: #8b949e;
+  --color-slate-400: #c9d1d9;
+  --color-slate-300: #c9d1d9;
+  --color-slate-200: #e6edf3;
+  --color-slate-100: #f0f6fc;
+
+  /* Button and Core Highlight (Green) */
+  --color-indigo-950: #0d1117;
+  --color-indigo-900: #1f242c;
+  --color-indigo-850: rgba(88, 166, 255, 0.15);
+  --color-indigo-800: #1f6feb;
+  --color-indigo-700: #388bfd;
+  --color-indigo-600: #2ea043; /* Hover Green */
+  --color-indigo-500: #238636; /* Core Action Green */
+  --color-indigo-400: #58a6ff; /* Accent Blue (Stack) */
+  --color-indigo-300: #79c0ff;
+  --color-indigo-200: #a5d6ff;
+  --color-indigo-100: #e6edf3;
+
+  /* Accent Highlight / Completed Task / Dynamic Pointer Colors (Greenish) */
+  --color-emerald-500: #238636;
+  --color-emerald-400: #7ee787;
+  --color-emerald-300: #56d364;
+  --color-emerald-800: #1f6feb;
+
+  /* Heap Highlight Colors (Purple) */
+  --color-pink-500: #a371f7;
+  --color-pink-400: #bc8cff;
+  --color-pink-300: #d2a8ff;
+
+  /* Active Code Frame & Warnings (Amber/Yellow/Orange) */
+  --color-amber-600: #9e7a1c;
+  --color-amber-500: #d29922;
+  --color-amber-400: #e3b341;
+
+  /* Sharp Border Radius overrides for High Density look */
+  --radius-2xl: 4px;
+  --radius-xl: 4px;
+  --radius-lg: 4px;
+  --radius-md: 4px;
+  --radius-sm: 2px;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+/* Compact Scrollbars fitting high density design */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b949e;
+}
+
