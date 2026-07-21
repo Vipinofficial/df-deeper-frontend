@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Users, LogIn, Plus, Send, Radio, UserCheck, ShieldAlert, Sparkles } from "lucide-react";
-import { localDb, localAuth } from "../firebase";
+import { localDb, localAuth } from "../localSim";
 import { CollaborationState } from "../types";
 
 interface CollaborationRoomProps {

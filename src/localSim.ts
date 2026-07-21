@@ -3,31 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, User } from "firebase/auth";
-import { getFirestore, doc, getDocFromServer } from "firebase/firestore";
-
-let firebaseConfig: any = null;
-let useCloud = false;
-
-try {
-  // We check dynamically or can import safely. Since it is in root, we wraps this.
-  // When the user configures firebase, this JSON will be injected.
-  // We can dynamically try to require or fetch, or use mock if not configured.
-} catch (e) {
-  console.log("Firebase config not available. Falling back to high-fidelity simulated local state.");
-}
-
-// We'll define a variable to switch logic in local storage vs cloud firestore.
-export const IS_CLOUD_CONNECTED = false; // By default false, user can click "Go Cloud" when set up.
-
-// Let's create a dynamic helper to see if we can load Firebase configurations.
-// For the sake of standard export compile safety, we define fallback configurations.
-export const db: any = null;
-export const auth: any = null;
-
-// Simulated/Local Auth and DB Provider to support Classrooms, pair programming, and lessons.
-// All simulation reads/writes will sync in localStorage or custom event listeners for instant collaboration simulation!
+// Local-only simulation layer for the classroom (Dashboard.tsx) and pair-programming
+// (CollaborationRoom.tsx) features. These are explicitly deferred/out of scope for the
+// DevFrogs productionization pass (see learn/deeper/README.md) — a real-time multi-user
+// backend for classrooms and live pairing is a materially bigger, separate lift.
+//
+// This file used to be firebase.ts and pretended to wrap Firebase; it never actually did
+// (IS_CLOUD_CONNECTED was hardcoded false, db/auth were always null, and nothing besides
+// this file imported the firebase package). Real app authentication is now handled by
+// @devfrogs/auth-ui's useCentralAuth in App.tsx — this module is ONLY the localStorage-backed
+// simulation for classrooms/pairing, renamed to make that scope explicit.
+//
+// All simulation reads/writes sync in localStorage or custom event listeners for
+// instant same-tab/cross-tab collaboration simulation.
 class SimulatedDatabase {
   private listeners: { [key: string]: Function[] } = {};
 
@@ -120,6 +108,9 @@ class SimulatedDatabase {
   }
 }
 
+// Simulated per-room/per-classroom display identity used ONLY by the deferred
+// pairing/classroom features. This is NOT app authentication — real sign-in is
+// central SSO via @devfrogs/auth-ui (see App.tsx).
 class SimulatedAuth {
   private userListeners: Function[] = [];
   private currentUser: any = null;

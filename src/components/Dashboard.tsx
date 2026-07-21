@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from "react";
 import { GraduationCap, Award, CheckCircle, CheckSquare, PlusCircle, BookOpen, AlertCircle, FileSpreadsheet } from "lucide-react";
-import { localDb, localAuth } from "../firebase";
+import { localDb } from "../localSim";
 import { Classroom } from "../types";
 
 export default function Dashboard({ onLoadCode }: { onLoadCode: (code: string) => void }) {
